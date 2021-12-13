@@ -8,12 +8,50 @@ namespace Praktikum_W14
 {
     internal class Program
     {
+		public static void Prima(int input, int jumlah)
+        {
+			for (int i = 1; i <= input; i++)
+			{
+				for (int j = 1; j <= i; j++)
+				{
+					if (i % j == 0)
+					{
+						jumlah++;
+					}
+				}
+				if (jumlah == 2)
+				{
+					Console.Write(i + " ");
+				}
+				jumlah = 0;
+			
+			}
+		}
+		public static void bukanPrima(int input, int jumlah)
+        {
+			for (int i = 1; i <= input; i++)
+			{
+				for (int j = 1; j <= i; j++)
+				{
+					if (i % j == 0)
+					{
+						jumlah++;
+					}
+				}
+				if (jumlah != 2)
+				{
+					Console.Write(i + " ");
+				}
+				jumlah = 0;
+			}
+		}
         static void Main(string[] args)
         {
             Console.Write("Input : ");
             int input = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Output : ");
 			int jumlah = 0;
+			int[,] bilangan = new int[input, input];
 			for (int i = 1; i <= input; i++)
 			{
 				int sisa = input % i;
@@ -22,14 +60,13 @@ namespace Praktikum_W14
 					jumlah = jumlah + 1;
 				}
 			}
-
 			if (jumlah > 2)
 			{
-				Console.WriteLine("Bukan angka prima");
+				bukanPrima(input, jumlah);
 			}
 			else
 			{
-				Console.WriteLine("Angka prima");
+				Prima(input, jumlah);
 			}
 		}
     }
