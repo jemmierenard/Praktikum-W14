@@ -8,41 +8,74 @@ namespace Praktikum_W14
 {
     internal class Program
     {
-		public static void Prima(int input, int jumlah)
+		public static void Prima(int input)
         {
-			for (int i = 1; i <= input; i++)
+			int jumlah = 0;
+			int apaPrima = 0;
+			int angkaMaju = 0;
+			for (int i = 0; i <= input; i++)
 			{
-				for (int j = 1; j <= i; j++)
+				for (int j = 0; j <= input; j++)
 				{
-					if (i % j == 0)
+					apaPrima = 0;
+					while (apaPrima == 0)
 					{
-						jumlah++;
+						angkaMaju++;
+						jumlah = 0;
+						for (int k = 1; k <= angkaMaju; k++)
+						{
+							if (angkaMaju % k == 0)
+							{
+								jumlah++;
+							}
+						}
+						if (jumlah == 2)
+						{
+							apaPrima = 1;
+						}
+						else
+						{
+							apaPrima = 0;
+						}
 					}
+					Console.Write(String.Format("{0,5}", angkaMaju));
 				}
-				if (jumlah == 2)
-				{
-					Console.Write(i + " ");
-				}
-				jumlah = 0;
-			
+				Console.WriteLine();
 			}
 		}
-		public static void bukanPrima(int input, int jumlah)
+		public static void BukanPrima(int input)
         {
+			int jumlah = 0;
+			int apaPrima = 0;
+			int angkaMaju = 0;
 			for (int i = 1; i <= input; i++)
 			{
-				for (int j = 1; j <= i; j++)
+				for (int j = 1; j <= input; j++)
 				{
-					if (i % j == 0)
+					apaPrima = 0;
+					while (apaPrima == 0)
 					{
-						jumlah++;
+						angkaMaju++;
+						jumlah = 0;
+						for (int k = 1; k <= angkaMaju; k++)
+						{
+							if (angkaMaju % k == 0)
+							{
+								jumlah++;
+							}
+						}
+						if (jumlah == 2)
+						{
+							apaPrima = 0;
+						}
+						else
+						{
+							apaPrima = 1;
+						}
 					}
+                    Console.Write(String.Format("{0,5}",angkaMaju));
 				}
-				if (jumlah != 2)
-				{
-					Console.Write(i + " ");
-				}
-				jumlah = 0;
+				Console.WriteLine();
 			}
 		}
         static void Main(string[] args)
@@ -51,7 +84,6 @@ namespace Praktikum_W14
             int input = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Output : ");
 			int jumlah = 0;
-			int[,] bilangan = new int[input, input];
 			for (int i = 1; i <= input; i++)
 			{
 				int sisa = input % i;
@@ -62,11 +94,11 @@ namespace Praktikum_W14
 			}
 			if (jumlah > 2)
 			{
-				bukanPrima(input, jumlah);
+				BukanPrima(input);
 			}
 			else
 			{
-				Prima(input, jumlah);
+				Prima(input);
 			}
 		}
     }
